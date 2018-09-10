@@ -72,6 +72,19 @@ mod tests {
     assert_eq!(4, item.data.len());
     assert_eq!(1, item.index.len());
   }
+
+  #[test]
+  fn can_add_text() {
+    let mut item = Item::new(23);
+    let mut field = Field {
+      name: "title".to_string(),
+      data_type: Type::Text,
+      data: "I am a title".to_string().into_bytes(),
+    };
+    item.add(&mut field);
+    assert_eq!(12, item.data.len());
+    assert_eq!(1, item.index.len());
+  }
 }
 
 use std::mem::transmute;
